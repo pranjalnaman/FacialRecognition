@@ -5,7 +5,7 @@ import os
 from PIL import Image
 import csv
 
-face_cascade = cv2.CascadeClassifier('C:\\Users\\hp\\Desktop\\Facial Recognition\\haarcascade_frontalface_alt.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
 
 idlist = ["","trump","trudeau"]
 def getlist(str):
@@ -60,7 +60,7 @@ def dataset_creator():
 		
 		imgPaths = []
 		
-		imgPaths = glob.glob("C:\\Users\\hp\\Desktop\\Facial Recognition\\New Folder\\"+idname+"\\*.jpg")
+		imgPaths = glob.glob("Data/"+idname+"/*.jpg")
 		for imgPath in imgPaths:
 			print(imgPath)
 			img = cv2.imread(imgPath)
@@ -128,7 +128,7 @@ def trainer():
 
 def detector():
 	rec = cv2.face.LBPHFaceRecognizer_create()
-	rec.read("C:\\Users\\hp\\Desktop\\Facial Recognition\\New folder\\trainer\\trainingdata.yml")
+	rec.read("trainer/trainingdata.yml")
 	IDname = getlist("")
 	print(IDname)
 	choice = int(input("1. TO USE THE WEBCAM FOR DETECTION\n2. TO DETECT FACES IN AN IMAGE\nCHOICE: "))
